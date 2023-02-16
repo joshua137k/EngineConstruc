@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7tug5m0qorkp"]
+
+[ext_resource type="Script" path="res://te.gd" id="1_ah8ct"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmhbl"]
+albedo_color = Color(0.698039, 0.333333, 0.0392157, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0iq1w"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0ejrc"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="base" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tmhbl")
+mesh = SubResource("BoxMesh_0iq1w")
+script = ExtResource("1_ah8ct")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_0ejrc")

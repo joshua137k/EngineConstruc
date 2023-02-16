@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://byvhdm7glb442"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_4ibbf"]
+[ext_resource type="PackedScene" uid="uid://c4r6rgomwulo7" path="res://ui.tscn" id="1_b14jh"]
+[ext_resource type="PackedScene" uid="uid://2oxdgu03lnbk" path="res://addons/character-controller/example/main/player.tscn" id="1_rne2d"]
+[ext_resource type="PackedScene" uid="uid://c7tug5m0qorkp" path="res://base.tscn" id="4_nln3t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_slw50"]
+sky_top_color = Color(0.517647, 0.517647, 0.517647, 1)
+sky_curve = 0.219613
+ground_bottom_color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[sub_resource type="Sky" id="Sky_vo2mq"]
+sky_material = SubResource("ProceduralSkyMaterial_slw50")
+
+[sub_resource type="Environment" id="Environment_hq3n1"]
+background_mode = 2
+sky = SubResource("Sky_vo2mq")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_4ibbf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hq3n1")
+
+[node name="UI" parent="." node_paths=PackedStringArray("Playerr") instance=ExtResource("1_b14jh")]
+Playerr = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("1_rne2d")]
+
+[node name="base" parent="." instance=ExtResource("4_nln3t")]
